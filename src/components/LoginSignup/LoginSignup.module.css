@@ -1,0 +1,40 @@
+.LoginSignup {
+    width: 100%;
+    background-color: #c7d7f5;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: auto;
+    /* padding: 10px 0; */
+}
+
+.LoginSignup input {
+    width: 80%;
+    padding: 7px;
+    display: block;
+    outline: none;
+    margin: 10px 0;
+    background-color:#ffffff;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.LoginSignup form {
+    /* width: 80%; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    margin: 5px;
+}
+
+.LoginButton {
+    background-color: #448dd1;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #919191;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #919191;
+}
