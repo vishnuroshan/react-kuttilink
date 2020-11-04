@@ -10,6 +10,7 @@ instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 instance.interceptors.request.use(config => {
     console.log('request interceptor:> ', config);
     config.headers = { 'Access-Control-Allow-Origin': '*' }
+    config.headers = { 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpc2hudXJvc2hhbjRAZ21haWwuY29tIiwiaWF0IjoxNjA0NDgyODY2LCJleHAiOjE2MDUwODc2NjZ9.-k2p1p6rhZTzRyI5us2mRQZoyFatYQtotnZRJKJQTcI' }
     return config;
 }, err => {
     console.log(err);

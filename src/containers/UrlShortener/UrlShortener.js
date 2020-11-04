@@ -1,35 +1,27 @@
 import React, { Component } from 'react'
 import Aux from '../../hoc/Aux';
 import ShortenUrl from '../../components/ShortenUrl/ShortenUrl';
-import Dashboard from '../../components/Dashboard/Dashboard';
-import LoginSignup from '../../components/LoginSignup/LoginSignup';
-
+import Dashboard from '../Dashboard/Dashboard';
+// import LoginSignup from '../../components/LoginSignup/LoginSignup';
+import axios from '../../apis/mylinkguru';
 class UrlShortener extends Component {
 
     state = {
-        auth: false,
-        urls: [
-            {
-                key: 'rWDFFHAA',
-                url: 'https://google.com',
-                clicks: 32
-            },
-            {
-                key: 'IfrrgQWER',
-                url: 'https://google.com',
-                clicks: 32
-            },
-            {
-                key: 'BNVDDD334aa',
-                url: 'https://google.com',
-                clicks: 32
-            }
-        ],
+        auth: true,
+        token: null,
+        urls: [],
         user: []
     };
 
-    loginHandler = (emailELem, passElem) => {
-        console.table(emailELem, passElem);
+    shouldComponentUpdate(nxtProps, nxtState) {
+        return nxtState.auth === this.state.auth;
+    }
+
+    componentDidMount() {
+        axios.getUrls().then((urlData) => {
+            console.log(urlData);
+            this.setState({ urls: urlData.data });
+        })
     }
 
     render() {
@@ -37,12 +29,13 @@ class UrlShortener extends Component {
         if (this.state.auth) {
             dashboard = <Dashboard urls={this.state.urls} />
         } else {
-            dashboard = <LoginSignup login={this.loginHandler} />
+            dashboard = null
         }
         return (
             <Aux>
                 <ShortenUrl />
                 <Dashboard urls={this.state.urls} />
+                {dashboard}
             </Aux>
         );
     }
