@@ -8,7 +8,23 @@ class UrlShortener extends Component {
 
     state = {
         auth: false,
-        urls: [],
+        urls: [
+            {
+                key: 'rWDFFHAA',
+                url: 'https://google.com',
+                clicks: 32
+            },
+            {
+                key: 'IfrrgQWER',
+                url: 'https://google.com',
+                clicks: 32
+            },
+            {
+                key: 'BNVDDD334aa',
+                url: 'https://google.com',
+                clicks: 32
+            }
+        ],
         user: []
     };
 
@@ -26,7 +42,7 @@ class UrlShortener extends Component {
         return (
             <Aux>
                 <ShortenUrl />
-                {dashboard}
+                <Dashboard urls={this.state.urls} />
             </Aux>
         );
     }
