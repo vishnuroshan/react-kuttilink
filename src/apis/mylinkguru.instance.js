@@ -1,47 +1,23 @@
 import axios from 'axios';
-
-const instance = axios.create({
+const httpClient = axios.create({
     baseURL: 'http://localhost:8000/'
-    // baseURL: 'https://mylinkguru.herokuapp.com/'
 });
 
-instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+httpClient.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
-instance.interceptors.request.use(config => {
-    console.log('request interceptor:> ', config);
+const AuthInterceptor = config => {
     config.headers = { 'Access-Control-Allow-Origin': '*' }
     config.headers = { 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpc2hudXJvc2hhbjRAZ21haWwuY29tIiwiaWF0IjoxNjA0NDgyODY2LCJleHAiOjE2MDUwODc2NjZ9.-k2p1p6rhZTzRyI5us2mRQZoyFatYQtotnZRJKJQTcI' }
     return config;
-}, err => {
+};
+
+httpClient.interceptors.request.use(AuthInterceptor, err => {
     console.log(err);
 });
 
-instance.interceptors.response.use(res => {
-    console.log('response interceptor:> ', res);
-    return res;
-}, err => {
-    console.log(err);
-});
+httpClient.removeAuthInterceptor = () => {
+    console.log('Removing auth header', { httpClient });
+    httpClient.interceptors.request.eject(AuthInterceptor);
+}
 
-// class InstanceBuilder {
-//     constructor() {
-//         this.instance = instance
-//     }
-
-//     get getInstance() {
-//         return this.instance
-//     }
-
-//     ejectRequest() {
-//         axios.interceptors.request.eject(this.instance);
-//         return this;
-//     }
-
-//     ejectRespose() {
-//         axios.interceptors.response.eject(this.instance);
-//         return this;
-//     }
-// }
-
-
-export default instance;
+export default httpClient;

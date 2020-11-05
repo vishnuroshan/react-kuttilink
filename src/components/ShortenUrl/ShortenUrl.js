@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './ShortenUrl.module.css';
 import Clipboard from 'react-clipboard.js';
-import api from '../../apis/mylinkguru';
+import API from '../../apis/mylinkguru';
 import ValidUrl from 'valid-url';
 
 
@@ -14,7 +14,7 @@ class ShortenUrl extends Component {
 
     shorten = () => {
         if (ValidUrl.isUri(this.state.url)) {
-            api.shorten(this.state.url).then((shortUrl) => {
+            API.shorten(this.state.url).then((shortUrl) => {
                 this.setState({ shortUrl });
             });
         } else { alert('please paste a valid url'); }
