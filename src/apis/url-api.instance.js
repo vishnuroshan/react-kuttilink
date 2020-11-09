@@ -1,4 +1,7 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
 const httpClient = axios.create({
     baseURL: 'http://localhost:8000/'
 });
@@ -6,8 +9,10 @@ const httpClient = axios.create({
 httpClient.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 const AuthInterceptor = config => {
-    config.headers = { 'Access-Control-Allow-Origin': '*' }
-    config.headers = { 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpc2hudXJvc2hhbjRAZ21haWwuY29tIiwiaWF0IjoxNjA0NDgyODY2LCJleHAiOjE2MDUwODc2NjZ9.-k2p1p6rhZTzRyI5us2mRQZoyFatYQtotnZRJKJQTcI' }
+    config.headers = { 'Access-Control-Allow-Origin': '*' };
+    if (cookies.get('token')) {
+        config.headers = { 'Authorization': cookies.get('token') }
+    }
     return config;
 };
 

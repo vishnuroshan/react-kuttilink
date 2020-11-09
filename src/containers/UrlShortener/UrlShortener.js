@@ -23,10 +23,12 @@ class UrlShortener extends Component {
     }
 
     componentDidMount() {
-        API.getUrls().then((urlData) => {
-            console.log(urlData);
-            this.setState({ urls: urlData.data });
-        })
+        if (this.state.auth) {
+            API.getUrls().then((urlData) => {
+                console.log(urlData);
+                this.setState({ urls: urlData.data });
+            })
+        }
     }
 
     render() {
