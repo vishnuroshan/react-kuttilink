@@ -1,4 +1,4 @@
-import httpClient from './mylinkguru.instance';
+import httpClient from './url-api.instance';
 
 const API = {};
 
@@ -24,5 +24,15 @@ API.shorten = (url) => {
     });
 }
 
+API.login = (email, password) => {
+    return new Promise((resolve, reject) => {
+        httpClient.post('/auth/login', { email, password }).then((response) => {
+            return resolve(response.data);
+        }, err => {
+            console.log(err);
+            return reject(err);
+        });
+    });
+}
 
 export default API;

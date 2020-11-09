@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './ShortenUrl.module.css';
 import Clipboard from 'react-clipboard.js';
-import API from '../../apis/mylinkguru';
+import API from '../../apis/url-api';
 import ValidUrl from 'valid-url';
 
 
