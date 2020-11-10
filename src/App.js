@@ -1,11 +1,14 @@
 
 import './App.css';
-import Layout from './containers/Layout/Layout';
+import UrlShortener from './containers/UrlShortener/UrlShortener';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Layout />
+      <BrowserRouter basename="/">
+        <UrlShortener />
+      </BrowserRouter>
     </div>
   );
 }

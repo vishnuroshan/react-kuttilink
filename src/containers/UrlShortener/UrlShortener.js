@@ -32,14 +32,10 @@ class UrlShortener extends Component {
     }
 
     render() {
-        let dash = <LoginSignup />;
-        if (this.state.auth) {
-            dash = <Dashboard urls={this.state.urls} />
-        }
         return (
             <React.Fragment>
                 <ShortenUrl />
-                {dash}
+                {this.state.auth ? <Dashboard urls={this.state.urls} /> : <LoginSignup />}
             </React.Fragment>
         );
     }
