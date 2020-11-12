@@ -30,6 +30,7 @@ const UrlShortener = (props) => {
                 setUser(urlData.user);
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auth]);
 
 

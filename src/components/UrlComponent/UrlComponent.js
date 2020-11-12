@@ -1,7 +1,7 @@
 import React from 'react';
 import cssClasses from './UrlComponent.module.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Typography, Box, Link, Paper, List, ListItem, ListItemText, CardActions, CardContent } from "@material-ui/core";
+import { Card, Typography, Link, CardContent } from "@material-ui/core";
 
 
 

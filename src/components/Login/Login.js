@@ -15,9 +15,9 @@ import API from '../../apis/url-api';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-function refreshPage() {
-    window.location.reload();
-}
+// function refreshPage() {
+//     window.location.reload();
+// }
 
 const useStyles = makeStyles((theme) => ({
     paper: {

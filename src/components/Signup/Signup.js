@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const refreshPage = () => {
-    window.location.reload();
-}
+// const refreshPage = () => {
+//     window.location.reload();
+// }
 
 export default function SignUp(props) {
     const classes = useStyles();
