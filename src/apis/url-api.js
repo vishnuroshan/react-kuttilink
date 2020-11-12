@@ -2,37 +2,36 @@ import httpClient from './url-api.instance';
 
 const API = {};
 
-API.getUrls = () => {
-    return new Promise((resolve, reject) => {
-        httpClient.get('/user/listUrls').then((response) => {
-            return resolve(response.data);
-        }, err => {
-            console.log(err);
-            return reject(err);
-        });
+API.getUrls = () =>
+    httpClient.get('/user/listUrls').then((response) => {
+        return response.data;
+    }, err => {
+        console.log(err);
+        return err;
     });
-}
 
-API.shorten = (url) => {
-    return new Promise((resolve, reject) => {
-        httpClient.post('/shorten', { url }).then((response) => {
-            return resolve(response.data.shortUrl);
-        }, err => {
-            console.log(err);
-            return reject(err);
-        });
+API.shorten = (url) =>
+    httpClient.post('/shorten', { url }).then((response) => {
+        return response.data.shortUrl;
+    }, err => {
+        console.log(err);
+        return err;
     });
-}
 
-API.login = (email, password) => {
-    return new Promise((resolve, reject) => {
-        httpClient.post('/auth/login', { email, password }).then((response) => {
-            return resolve(response.data);
-        }, err => {
-            console.log(err);
-            return reject(err);
-        });
+API.login = (email, password) =>
+    httpClient.post('/auth/login', { email, password }).then((response) => {
+        return response.data;
+    }, err => {
+        console.log(err);
+        return err;
     });
-}
+
+API.signup = (firstname, lastname, email, password) =>
+    httpClient.post('/auth/create-account', { firstname, lastname, email, password }).then((response) => {
+        return response.data;
+    }, err => {
+        console.log(err);
+        return err;
+    });
 
 export default API;

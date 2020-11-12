@@ -1,0 +1,16 @@
+.MenuButton {
+    margin-right: 20px;
+}
+.Title {
+    flex-grow: 1
+}
+.NavLink {
+    padding: 12px;
+    color: white;
+}
+
+.NavLink:hover {
+    border: 1px solid #fff;
+    color: white;
+}
+

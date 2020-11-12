@@ -143,8 +143,8 @@ class LoginSignup extends Component {
                     />
                     )}
                     <Button
-                        disabled={!this.state.loginFormIsValid}
-                        btnType="Action">LOGIN</Button>
+                        onClick={this.loginHandler}
+                        disabled={!this.state.loginFormIsValid}>LOGIN</Button>
                 </form>
             </React.Fragment>
         );
@@ -166,8 +166,7 @@ class LoginSignup extends Component {
                         />
                     })}
                     <Button
-                        disabled={!this.state.signupFormIsValid}
-                        btnType="Action">SIGN-UP</Button>
+                        disabled={!this.state.signupFormIsValid}>SIGN-UP</Button>
                 </form>
             </React.Fragment>
 
@@ -175,7 +174,7 @@ class LoginSignup extends Component {
 
 
         return (
-            <div className={classes.LoginSignup} >
+            <div>
                 <header>
                     <nav>
                         <ul>
