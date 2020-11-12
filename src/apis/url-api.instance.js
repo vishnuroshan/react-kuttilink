@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 const httpClient = axios.create({
-    baseURL: 'http://localhost:8000/'
+    baseURL: process.env.REACT_APP_API_URL
 });
 
 httpClient.defaults.headers.common['Access-Control-Allow-Origin'] = '*';

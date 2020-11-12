@@ -39,7 +39,7 @@ const refreshPage = () => {
     window.location.reload();
 }
 
-export default function SignUp() {
+export default function SignUp(props) {
     const classes = useStyles();
     const [firstname, setFname] = useState();
     const [lastname, setLname] = useState();
@@ -53,7 +53,8 @@ export default function SignUp() {
         API.signup(firstname, lastname, email, password).then((response) => {
             console.log(response);
             cookies.set('token', response.token);
-            refreshPage();
+            // refreshPage();
+            props.history.push('/url');
         });
     };
 

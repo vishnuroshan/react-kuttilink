@@ -4,10 +4,10 @@ import Clipboard from 'react-clipboard.js';
 import API from '../../apis/url-api';
 import ValidUrl from 'valid-url';
 import { TextField, Link, Button, Paper, Grid } from '@material-ui/core';
-
+import Dashboard from '../Dashboard/Dashboard';
 
 const ShortenUrl = (props) => {
-
+    console.log('shortenURL::> ', props)
     const [url, setUrl] = useState();
     const [shortUrl, setShortUrl] = useState();
 
@@ -15,6 +15,7 @@ const ShortenUrl = (props) => {
         if (ValidUrl.isUri(url)) {
             API.shorten(url).then((shortUrl) => {
                 setShortUrl(shortUrl);
+                // props.history.push('/url')
             });
         } else { alert('please paste a valid url'); }
     }
@@ -51,6 +52,11 @@ const ShortenUrl = (props) => {
                 flexFlow: 'column'
             }}>
                 {urlText}
+            </Grid>
+
+            <Grid item xs={12}>
+                {props.auth && props.urls && props.urls.length > 0 ? <Dashboard urls={props.urls} /> : <p>no urls to show!</p>}
+                {props.auth ? null : <p>Please sign-in to view dashboard</p>}
             </Grid>
         </Grid>
     );

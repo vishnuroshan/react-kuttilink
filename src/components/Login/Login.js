@@ -39,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
+    console.log('props:::> ', props);
+
     const classes = useStyles();
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -49,7 +51,9 @@ export default function SignIn() {
         API.login(email, password).then((response) => {
             console.log('response:::> ', response);
             cookies.set('token', response.token);
-            refreshPage();
+            props.setUser(response.user);
+            // refreshPage();
+            props.history.push('/url');
         });
     };
 
