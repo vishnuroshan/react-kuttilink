@@ -10,8 +10,8 @@ httpClient.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 const AuthInterceptor = config => {
     config.headers = { 'Access-Control-Allow-Origin': '*' };
-    if (cookies.get('token')) {
-        config.headers = { 'Authorization': cookies.get('token') }
+    if (cookies.get('kutti-url-token')) {
+        config.headers = { 'Authorization': cookies.get('kutti-url-token') }
     }
     return config;
 };

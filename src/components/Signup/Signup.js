@@ -12,8 +12,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import API from '../../apis/url-api';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import ck from '../../cookies/cookies';
+
+// import Cookies from 'universal-cookie';
+// const cookies = new Cookies();
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(3),
     },
     submit: {
@@ -48,12 +50,10 @@ export default function SignUp(props) {
 
 
     const signupHandler = (event) => {
-        console.log('dadasdadadasd', event)
         event.preventDefault();
         API.signup(firstname, lastname, email, password).then((response) => {
             console.log(response);
-            cookies.set('token', response.token);
-            // refreshPage();
+            ck.SetToken = response.token;
             props.history.push('/url');
         });
     };
@@ -137,7 +137,7 @@ export default function SignUp(props) {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">Already have an account? Sign in</Link>
+                            <Link href="/login" variant="body2">Already have an account? Sign in</Link>
                         </Grid>
                     </Grid>
                 </form>

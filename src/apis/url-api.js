@@ -1,5 +1,4 @@
 import httpClient from './url-api.instance';
-
 const API = {};
 
 API.getUrls = () =>

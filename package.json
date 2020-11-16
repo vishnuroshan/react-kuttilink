@@ -47,6 +47,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {},
-  "proxy": "https://mylinkguru.herokuapp.com/"
+  "devDependencies": {}
 }

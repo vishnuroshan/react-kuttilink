@@ -4,13 +4,15 @@ import API from '../../apis/url-api';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import { Container, AppBar, IconButton, Link, Toolbar, Typography, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import Cookies from 'universal-cookie';
 import cssClasses from './UrlShortener.module.css';
 
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
 
-const cookies = new Cookies();
+import ck from '../../cookies/cookies';
+
+// import Cookies from 'universal-cookie';
+// const cookies = new Cookies();
 
 const UrlShortener = (props) => {
 
@@ -18,7 +20,7 @@ const UrlShortener = (props) => {
 
     const [urls, setUrls] = useState([]);
     const [user, setUser] = useState({});
-    const [auth, setAuth] = useState(cookies.get('token') ? true : false);
+    const [auth, setAuth] = useState(ck.getToken ? true : false);
 
 
     useEffect(() => {
@@ -35,7 +37,7 @@ const UrlShortener = (props) => {
 
 
     function logoutHandler() {
-        cookies.remove('token');
+        ck.removeToken();
         setAuth(false);
         setUrls([]);
         setUser({});
@@ -47,6 +49,7 @@ const UrlShortener = (props) => {
         </Link> :
         <React.Fragment>
             <NavLink
+                to="/login/"
                 className={classes.NavLink}
                 exact
                 activeClassName="my-active">
