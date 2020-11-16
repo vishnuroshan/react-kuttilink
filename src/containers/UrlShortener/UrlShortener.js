@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ShortenUrl from '../../components/ShortenUrl/ShortenUrl';
 import API from '../../apis/url-api';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
-import { Container, AppBar, IconButton, Link, Toolbar, Typography, Button } from '@material-ui/core';
+import { Container, AppBar, IconButton, Link, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import cssClasses from './UrlShortener.module.css';
 
